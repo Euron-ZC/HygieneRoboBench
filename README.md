@@ -15,7 +15,7 @@ Tianyi Wang<sup>2,6</sup>, Mark Crowley<sup>3</sup>, Wentao Zhu<sup>2,7</sup>
   <a href="docs/assets/manuscript.pdf"><img src="assets/badges/paper.svg" alt="Paper" height="28" /></a>
   <a href="https://euron-zc.github.io/HygieneRoboBench/"><img src="assets/badges/project-page.svg" alt="Project Page" height="28" /></a>
   <a href="#paper-and-citation"><img src="assets/badges/arxiv.svg" alt="arXiv" height="28" /></a>
-  <a href="https://www.youtube.com/watch?v=yBnLlfmBzL4"><img src="assets/badges/video.svg" alt="Video" height="28" /></a>
+  <a href="https://www.youtube.com/watch?v=lHuMwe2h5wo"><img src="assets/badges/video.svg" alt="Video" height="28" /></a>
 </p>
 
 <p align="center">
@@ -90,7 +90,7 @@ Citation metadata is also available in [CITATION.cff](CITATION.cff).
 
 ### Videos
 
-[Research introduction on YouTube](https://www.youtube.com/watch?v=yBnLlfmBzL4): the motivating case, benchmark construction, controlled evaluations, results, and companion planner.
+[Research introduction on YouTube](https://www.youtube.com/watch?v=lHuMwe2h5wo): the motivating case, benchmark construction, controlled evaluations, results, and companion planner.
 
 ## Release plan
 
