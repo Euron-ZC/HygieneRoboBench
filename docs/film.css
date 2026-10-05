@@ -1,0 +1,48 @@
+.research-player {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: 200px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #07160e;
+  box-shadow: 0 30px 70px #0004;
+}
+.research-player iframe,
+.research-player > div,
+.film-cover {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.film-cover {
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  padding: 0;
+  background: #07160e;
+}
+.film-cover[hidden] { display: none; }
+.film-cover img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.film-play {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 54px;
+  border-radius: 13px;
+  background: #c82020;
+  color: white;
+  font-size: 26px;
+  padding-left: 4px;
+}
+.film-cover:hover .film-play { background: #f00; }
+.film-cover:focus-visible { outline: 3px solid #c8e298; outline-offset: -3px; }

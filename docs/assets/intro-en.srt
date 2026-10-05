@@ -1,0 +1,419 @@
+1
+00:00:00,735 --> 00:00:04,585
+A robot is preparing fruit. Is its gripper safe to use?
+
+2
+00:00:06,385 --> 00:00:09,860
+First, the left gripper touches a contaminated tray.
+
+3
+00:00:11,385 --> 00:00:14,285
+It then carries contamination to the spoon handle.
+
+4
+00:00:16,385 --> 00:00:19,473
+The robot washes both grippers, but not the spoon.
+
+5
+00:00:19,785 --> 00:00:21,772
+Its handle stays contaminated.
+
+6
+00:00:25,385 --> 00:00:28,888
+The assistant returns the spoon, contaminating the clean right
+
+7
+00:00:28,898 --> 00:00:29,860
+gripper again.
+
+8
+00:00:32,385 --> 00:00:36,262
+The fruit-handling plan must change. First, the robot puts down
+
+9
+00:00:36,272 --> 00:00:36,973
+the spoon.
+
+10
+00:00:38,385 --> 00:00:42,450
+User priorities can favor different treatments. We demonstrate
+
+11
+00:00:42,460 --> 00:00:44,922
+washing with water and wiping with paper.
+
+12
+00:00:48,385 --> 00:00:51,835
+After treatment, the robot resumes placing fruit.
+
+13
+00:00:53,385 --> 00:00:56,888
+Planning must decide what to treat, when, and at what resource
+
+14
+00:00:56,898 --> 00:00:57,535
+cost.
+
+15
+00:01:00,385 --> 00:01:03,800
+The benchmark formalizes this choice as washing or replacing the
+
+16
+00:01:03,810 --> 00:01:08,848
+contact pad. User priorities determine the preferred safe continuation.
+
+17
+00:01:11,385 --> 00:01:15,185
+HygieneRoboBench tests household planning under contact history,
+
+18
+00:01:15,360 --> 00:01:17,447
+user priorities, and new events.
+
+19
+00:01:18,802 --> 00:01:24,842
+Our 624 instances form 134 task families, covering five activity
+
+20
+00:01:24,852 --> 00:01:27,052
+groups and seven household areas.
+
+21
+00:01:28,285 --> 00:01:32,610
+Figure three shows three views of these same 624 instances:
+
+22
+00:01:33,148 --> 00:01:37,137
+activity groups, construction designs, and difficulty. The rings
+
+23
+00:01:37,148 --> 00:01:40,960
+partition the same dataset; they are not additional samples.
+
+24
+00:01:42,285 --> 00:01:47,050
+Each task provides a request, physical observations, history, resources,
+
+25
+00:01:47,060 --> 00:01:50,010
+available events, and ordered user priorities.
+
+26
+00:01:50,618 --> 00:01:55,083
+Under shared rules, planners return actions, objects, gripper assignments,
+
+27
+00:01:55,093 --> 00:01:58,568
+and schedules, or an infeasible or undetermined judgment.
+
+28
+00:01:59,185 --> 00:02:03,322
+Controlled pairs change history, priorities, or event information,
+
+29
+00:02:03,560 --> 00:02:05,735
+keeping other task conditions fixed.
+
+30
+00:02:07,102 --> 00:02:09,539
+Figure two shows how the benchmark is built.
+
+31
+00:02:09,852 --> 00:02:13,852
+Household activities and hygiene guidance feed five shared registries,
+
+32
+00:02:14,089 --> 00:02:17,077
+which define the rules used to construct each task.
+
+33
+00:02:20,752 --> 00:02:25,829
+Tasks adapt BEHAVIOR-1K activities. Published studies and public-health
+
+34
+00:02:25,839 --> 00:02:29,729
+guidance inform hygiene rules with explicit material and procedure
+
+35
+00:02:29,739 --> 00:02:30,739
+requirements.
+
+36
+00:02:31,352 --> 00:02:34,979
+In the fruit task, washing requires an empty gripper and treats
+
+37
+00:02:34,989 --> 00:02:38,839
+only its contact pad. The spoon stays separately tracked.
+
+38
+00:02:39,452 --> 00:02:43,064
+Washing and replacement have abstract time and resource costs,
+
+39
+00:02:43,427 --> 00:02:46,152
+giving planners a common basis for comparison.
+
+40
+00:02:47,385 --> 00:02:51,587
+For general parameter construction, an LLM screens online time
+
+41
+00:02:51,597 --> 00:02:55,400
+and supply estimates; reviewers check plausibility and relative
+
+42
+00:02:55,410 --> 00:02:56,422
+magnitudes.
+
+43
+00:02:57,052 --> 00:03:01,367
+Washing saves spare parts. Replacement saves water but produces
+
+44
+00:03:01,377 --> 00:03:05,389
+waste. User priorities determine the preferred safe option.
+
+45
+00:03:06,018 --> 00:03:10,456
+Two reviewers check applicability, action conditions, and consistency;
+
+46
+00:03:10,693 --> 00:03:14,621
+a third gives final review. Programs separately validate matched
+
+47
+00:03:14,631 --> 00:03:16,718
+conditions and reference targets.
+
+48
+00:03:17,352 --> 00:03:21,529
+The episode builder combines a base task with histories, priorities,
+
+49
+00:03:21,539 --> 00:03:25,827
+and event information. Matched-condition checks, reference validation,
+
+50
+00:03:26,039 --> 00:03:29,889
+independent replay, and human review govern dataset admission.
+
+51
+00:03:32,702 --> 00:03:36,604
+Independent of the planning solver, the evaluator replays history
+
+52
+00:03:36,614 --> 00:03:40,164
+and checks goals, hygiene, timing, and resource limits.
+
+53
+00:03:40,785 --> 00:03:43,672
+Holding the spoon violates the washing precondition.
+
+54
+00:03:43,972 --> 00:03:47,497
+Putting it down first satisfies the empty-gripper requirement.
+
+55
+00:03:48,118 --> 00:03:52,421
+The evaluator recomputes costs and compares them with private reference
+
+56
+00:03:52,431 --> 00:03:56,483
+targets under the same priorities. Planners cannot access these
+
+57
+00:03:56,493 --> 00:03:57,293
+targets.
+
+58
+00:03:57,918 --> 00:04:01,921
+Safe resolution credits safe completion or correct infeasibility
+
+59
+00:04:01,931 --> 00:04:06,396
+rejection. Optimal safe resolution also requires reference-optimal
+
+60
+00:04:06,406 --> 00:04:08,256
+costs for submitted plans.
+
+61
+00:04:09,602 --> 00:04:14,254
+We evaluate five language models, Rule-SAT, and Hygiene-NSP on
+
+62
+00:04:14,264 --> 00:04:16,777
+the same 624 instances.
+
+63
+00:04:17,385 --> 00:04:23,000
+Hygiene-NSP reaches 94.4 percent safe resolution and 90.4 percent
+
+64
+00:04:23,010 --> 00:04:26,573
+optimal safe resolution, the highest overall rates.
+
+65
+00:04:27,185 --> 00:04:33,550
+DeepSeek produces 98 safe, nonoptimal plans. In 41, water or replacement
+
+66
+00:04:33,560 --> 00:04:36,285
+parts is the first nonoptimal cost dimension.
+
+67
+00:04:36,918 --> 00:04:40,381
+All seven planners score lower as difficulty increases.
+
+68
+00:04:40,693 --> 00:04:44,996
+Activity breakdowns reveal different strengths: Gemini leads cleaning
+
+69
+00:04:45,006 --> 00:04:45,831
+and laundry.
+
+70
+00:04:47,168 --> 00:04:50,818
+These fruit histories share physical conditions and priorities.
+
+71
+00:04:51,118 --> 00:04:55,233
+Changing whether washing precedes spoon contact changes the contamination
+
+72
+00:04:55,243 --> 00:04:55,881
+state.
+
+73
+00:04:56,518 --> 00:05:00,758
+Prioritizing spare parts, the contaminated case needs washing before
+
+74
+00:05:00,768 --> 00:05:04,683
+fruit handling. The clean case can continue directly after putting
+
+75
+00:05:04,693 --> 00:05:05,593
+down the spoon.
+
+76
+00:05:06,818 --> 00:05:10,693
+Swap the histories, keeping saved actions and timing fixed.
+
+77
+00:05:11,006 --> 00:05:15,821
+Direct continuation becomes unsafe. Washing stays safe, but adds
+
+78
+00:05:15,831 --> 00:05:17,331
+unnecessary treatment.
+
+79
+00:05:18,552 --> 00:05:22,289
+As a control, histories differ on an unused side pad.
+
+80
+00:05:22,589 --> 00:05:26,989
+Neither continuation touches it again. Outcomes stay unchanged.
+
+81
+00:05:28,218 --> 00:05:34,333
+After relevant-history swaps, none of 1,699 originally safe, optimal
+
+82
+00:05:34,343 --> 00:05:40,583
+replays retain both. All 1,288 irrelevant-history evaluations preserve
+
+83
+00:05:40,593 --> 00:05:41,606
+their outcomes.
+
+84
+00:05:43,568 --> 00:05:47,933
+Priority pairs instead fix history and action costs, testing whether
+
+85
+00:05:47,943 --> 00:05:51,306
+plans adapt when users change their resource preferences.
+
+86
+00:05:51,918 --> 00:05:59,008
+Hygiene-NSP succeeds on 234 of 268 general pairs and 24 of 25 ranking-flip
+
+87
+00:05:59,018 --> 00:06:01,031
+pairs, leading both groups.
+
+88
+00:06:01,652 --> 00:06:06,142
+Event tests update history and context. Fifty relevant and fifty
+
+89
+00:06:06,152 --> 00:06:10,354
+irrelevant instances assess safe, optimal continuation after new
+
+90
+00:06:10,364 --> 00:06:11,802
+contact information.
+
+91
+00:06:12,418 --> 00:06:17,156
+Hygiene-NSP reaches 88 and 92 percent optimal safe resolution.
+
+92
+00:06:17,456 --> 00:06:19,781
+Gemini leads both event conditions.
+
+93
+00:06:21,735 --> 00:06:25,860
+Hygiene-NSP grounds requests and priorities with a language model.
+
+94
+00:06:26,160 --> 00:06:29,398
+A trusted compiler checks the structured planning problem.
+
+95
+00:06:30,018 --> 00:06:34,996
+History replay reconstructs hygiene states. CP-SAT jointly schedules
+
+96
+00:06:35,006 --> 00:06:38,218
+treatment and service actions under user priorities.
+
+97
+00:06:38,852 --> 00:06:42,454
+Optional state projection retains task-relevant information in
+
+98
+00:06:42,464 --> 00:06:46,364
+a smaller representation, with full-state fallback when needed.
+
+99
+00:06:46,985 --> 00:06:52,062
+Across 177 paired runs, local planning time improves by a median
+
+100
+00:06:52,072 --> 00:06:57,425
+20.1 percent across families, excluding language-model calls. Status
+
+101
+00:06:57,435 --> 00:07:00,398
+and cost agree in 175 pairs.
+
+102
+00:07:02,335 --> 00:07:06,375
+HygieneRoboBench connects contact history, resource priorities,
+
+103
+00:07:06,385 --> 00:07:10,450
+and event response: evaluating both safe completion and the right
+
+104
+00:07:10,460 --> 00:07:11,910
+safe choice for the user.
+
+105
+00:07:12,518 --> 00:07:16,656
+Thank you for watching. Explore the benchmark on the project page.

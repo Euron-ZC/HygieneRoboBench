@@ -1,0 +1,179 @@
+/* One type scale by content role. Layout and color stay in style.css/paper.css. */
+@font-face {
+  font-family: 'HRB Inter';
+  src: url('assets/fonts/InterVariable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  --font-ui: 'HRB Inter', Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --type-section: clamp(36px, 4vw, 56px);
+  --type-subsection: 32px;
+  --type-component: 24px;
+  --type-lead: 18px;
+  --type-body: 16px;
+  --type-small: 14px;
+  --type-label: 12px;
+  --type-metric: 44px;
+}
+body {font-family:var(--font-ui);font-size:var(--type-body);font-weight:400;line-height:1.65}
+button, input, select, textarea, table {font-family:var(--font-ui)}
+h1,h2,h3,h4 {font-weight:600}
+strong,b {font-weight:600}
+
+/* Main sections: problem, benchmark, findings, method, film, resources. */
+.section-heading h2,.resources h2 {
+  font-size:var(--type-section);font-weight:600;line-height:1.12;letter-spacing:-.045em;
+}
+
+/* Subsections and figure narratives share the same rank. */
+.subheading h3,.controlled-findings .subheading h3,.benchmark-intro h3,
+.parameter-box h3,.paper-feature h3,.paper-composition h3 {
+  font-size:var(--type-subsection);font-weight:600;line-height:1.2;letter-spacing:-.035em;
+}
+
+/* Local explanations, method steps, scene captions, and expanded details. */
+.registry-visual h3,.detail-grid h3,.evaluation-flow h4,.method-path h3,
+.projection h3,.secondary h3,.transcript h3,#swap-panel h3,
+.task-caption h3,.hero-story h2,.showcase-caption h2,.paper-dialog-bar h2 {
+  font-size:var(--type-component);font-weight:600;line-height:1.25;letter-spacing:-.025em;
+}
+.section-heading>p:last-child:not(.eyebrow),.subheading>p:last-child {
+  font-size:var(--type-lead);font-weight:400;line-height:1.65;letter-spacing:normal;
+}
+.test-list p,.registry-visual p,.registry-list p,
+.parameter-box p:not(.eyebrow):not(#priority-verdict),.detail-grid p,
+.evaluation-flow p,.metrics p,.method-path p,.projection p,.finding-notes p,
+.swap-stats p,.transcript p,#history-reason,#swap-panel p:not(.mini-label),
+.chart-insight,.resources p,.paper-composition figcaption>p:not(.eyebrow) {
+  font-size:var(--type-body);font-weight:400;line-height:1.65;letter-spacing:normal;
+}
+.plan,.test-list strong,.metrics strong,.registry-list summary,
+.evidence-detail summary,.transcript summary,.results-box>h3,
+.resource-list>a,.resource-list>div {
+  font-size:var(--type-body);font-weight:500;line-height:1.5;letter-spacing:normal;
+}
+.order {font-size:var(--type-component);font-weight:500;line-height:1.4;letter-spacing:-.025em}
+
+/* Overlines name a category, not another heading level. */
+body .eyebrow,.mini-label,.hero-title .eyebrow,.hero-story-top .eyebrow,
+.section-heading .eyebrow,.subheading .eyebrow,.history-explanation .mini-label,
+.secondary .eyebrow,.paper-feature .eyebrow,#swap-panel .mini-label,.tldr h2 {
+  font-size:var(--type-label);font-weight:600;line-height:1.5;letter-spacing:.09em;
+  text-transform:uppercase;
+}
+.section-index,.nav-number,.menu-number,.registry-list summary span,
+.method-path span,.reel-step small {
+  font-size:var(--type-label);font-weight:500;line-height:1.5;letter-spacing:normal;
+  font-variant-numeric:tabular-nums;
+}
+
+/* All ordinary controls have one readable size and weight. */
+.button,.figure-open,.paper-controls button,.chart-tabs button,
+.priority-switch button,.hero-view-switch button,.result-filters button,
+.text-link,.history-tabs button,.chapter-links button,#paper-dialog-close,
+.site-header nav,.nav-film,.mobile-nav summary,.mobile-nav a,
+.film-links,.reel-step,#motion-toggle {
+  font-size:var(--type-small);font-weight:500;line-height:1.5;letter-spacing:normal;
+}
+.task-card h3,.task-card.active h3,.planner-name,.featured .planner-name,
+.paper-composition li strong {
+  font-size:var(--type-small);font-weight:600;line-height:1.5;letter-spacing:normal;
+}
+.paper-caption {
+  font-size:var(--type-small);font-weight:400;line-height:1.6;letter-spacing:normal;
+}
+.experiment-label,.explorer-foot>span,.area-line,.media-note,.state-label,.state,
+.history-tabs button span,.task-card span,.task-caption span,.scene-tag,
+.publication-line,.stats span,.hero-activity-line,.hero-activity-line>span,
+.scroll-cue,.chart-legend,.chart-axis,.chapter-links button span,
+.resource-list span:last-child,footer p,footer>a:last-child,
+.paper-composition li span,#paper-dialog>p,.cost-table caption,#priority-verdict {
+  font-size:var(--type-label);font-weight:400;line-height:1.5;letter-spacing:normal;
+}
+#priority-verdict {font-weight:600}
+.table-scroll table {font-size:var(--type-small);line-height:1.5}
+.table-scroll thead th {font-size:var(--type-label);font-weight:600;line-height:1.5}
+.table-scroll tbody th {font-size:var(--type-small);font-weight:600;line-height:1.5}
+.table-scroll td {font-size:var(--type-small);font-weight:400;line-height:1.5}
+.cost-table tbody th,.cost-table tbody td {font-size:var(--type-body);line-height:1.5}
+.cost-table td.emphasis {font-weight:600}
+.bar span,.featured .bar span {font-size:var(--type-label);font-weight:500;line-height:18px}
+.bar {height:16px}
+.dual-bars {gap:5px;padding-right:52px}
+.chart-axis {margin-right:52px}
+
+/* Numbers are evidence callouts; the brand and TL;DR are deliberate display roles. */
+.stats strong,.finding-notes>div>strong,.swap-stats strong,.projection strong {
+  font-size:var(--type-metric);font-weight:500;line-height:1.2;letter-spacing:-.045em;
+  font-variant-numeric:tabular-nums;
+}
+.swap-stats strong small {font-size:var(--type-component);font-weight:400;line-height:1.25}
+.metrics b {font-size:var(--type-component);font-weight:600;line-height:1.25}
+.hero[data-view] h1 {font-weight:700}
+.hero h1 span {font-weight:400}
+.wordmark,footer .wordmark {font-size:20px;font-weight:700}
+.wordmark span {font-weight:400}
+.paper-title {font-weight:400}
+.tldr p {font-size:26px;font-weight:400;line-height:1.55;letter-spacing:-.025em}
+.paper-composition li {gap:20px}
+.paper-composition li span {flex:0 0 100px}
+.paper-composition li strong {font-size:var(--type-body)}
+.hero-activity-line {flex-wrap:wrap}
+.hero-story-top .eyebrow {max-width:none}
+
+@media(max-width:800px) {
+  :root {--type-subsection:28px;--type-component:22px;--type-lead:17px;--type-metric:36px}
+  .tldr p {font-size:22px}
+  .hero-view-switch {min-width:0;flex:1}
+  .hero-view-switch button {white-space:normal;flex:1;padding:7px 9px}
+  .hero-controls {min-width:0}
+  .task-selector {display:flex;flex-direction:row;overflow-x:auto;gap:16px;padding-bottom:12px}
+  .task-card {flex:0 0 135px}
+  .task-card img {width:100%;height:84px;object-fit:cover}
+  .method-path {grid-template-columns:1fr 1fr}
+  .method-path::before {display:none}
+  .evaluation-flow {grid-template-columns:1fr;gap:18px}
+  .flow-arrow {transform:rotate(90deg);width:20px;margin:2px 0}
+}
+@media(max-width:520px) {
+  .stats {grid-template-columns:repeat(2,1fr);gap:24px 0}
+  .stats>div:nth-child(3) {border-left:none}
+  .hero[data-view] {min-height:max(950px,100svh)}
+  .hero-activity-line {gap:8px 15px}
+  .hero-view-switch button {padding:6px 7px}
+  #motion-toggle {flex:0 0 36px}
+  .hero-title .eyebrow {max-width:290px;margin-inline:auto}
+  .hero-actions .button {padding:0 10px;gap:6px}
+  .hero-story h2 {max-width:100%;min-height:0}
+  .history-tabs {gap:18px}
+  .history-tabs button {flex:1;text-align:left}
+  .finding-notes>div {display:block}
+  .projection {grid-template-columns:1fr}
+  .result-filters {gap:8px}
+  .result-row {gap:12px}
+  .results-box .chart-tabs {gap:16px}
+  .site-header {padding-inline:20px}
+  .mobile-nav {margin-left:12px}
+  .paper-composition li span {flex-basis:85px}
+}
+
+/* Natural wrapping: keep the type scale, give headings adequate measure. */
+.section-heading {max-width:1120px}
+.section-heading>p:last-child:not(.eyebrow) {max-width:860px;text-wrap:pretty}
+.paper-title {max-width:1100px;text-wrap:balance}
+.section-heading h2,.subheading h3,.benchmark-intro h3,.parameter-box h3,
+.paper-composition h3,.method-path h3 {text-wrap:balance}
+
+/* Resource entry points share the hero control hierarchy. */
+.hero-actions {flex-wrap:wrap;align-items:center}
+.hero-actions .button {justify-content:center;white-space:nowrap;min-width:105px}
+.hero-actions .button:focus-visible {outline:2px solid #c8e298;outline-offset:3px}
+.hero-actions .resource-pending {color:#f0f3ed;border-color:#ffffff60;background:#ffffff0d;cursor:default;opacity:1}
+.hero-actions .resource-pending:hover {transform:none;background:#ffffff0d}
+.hero-actions .release-status {font-size:inherit;font-weight:400;color:#ced8ce}
+@media(max-width:600px) {
+ .hero-actions {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:390px;margin-inline:auto;gap:10px}
+ .hero-actions .button {min-width:0;padding:0 8px;gap:7px}
+}

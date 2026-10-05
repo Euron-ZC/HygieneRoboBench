@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "Please cite the HygieneRoboBench manuscript if you use this work."
+type: article
+title: "HygieneRoboBench: Benchmarking Hygiene-Aware Planning for Household Robots"
+authors:
+  - family-names: Chen
+    given-names: Yurun
+  - family-names: Sun
+    given-names: Josh Qixuan
+  - family-names: Qin
+    given-names: Jason
+  - family-names: Li
+    given-names: Chengtai
+  - family-names: Wang
+    given-names: Tianyi
+  - family-names: Crowley
+    given-names: Mark
+  - family-names: Zhu
+    given-names: Wentao
+url: "https://github.com/Euron-ZC/HygieneRoboBench"
+repository-code: "https://github.com/Euron-ZC/HygieneRoboBench"
+keywords:
+  - household robotics
+  - hygiene-aware planning
+  - contact history
+  - benchmark

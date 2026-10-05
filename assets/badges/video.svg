@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="91" height="28" viewBox="0 0 91 28" role="img" aria-label="Video">
+  <title>Video</title>
+  <rect width="91" height="28" rx="3" fill="#d12b2b"/>
+  <g transform="translate(10 5) scale(.75)"><path fill="white" d="M22 6.5a3 3 0 0 0-2.1-2.1C18 4 12 4 12 4s-6 0-7.9.4A3 3 0 0 0 2 6.5 31 31 0 0 0 1.6 12 31 31 0 0 0 2 17.5a3 3 0 0 0 2.1 2.1C6 20 12 20 12 20s6 0 7.9-.4a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .4-5.5 31 31 0 0 0-.4-5.5Z"/><path fill="#d12b2b" d="m10 8 6 4-6 4Z"/></g>
+  <text x="36" y="18.5" fill="white" font-family="Verdana,Arial,sans-serif" font-size="11" font-weight="600">Video</text>
+</svg>

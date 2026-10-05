@@ -1,0 +1,37 @@
+/* Original manuscript figures integrated into the research narrative. */
+.paper-feature{margin:58px 0 66px;padding:0}
+.paper-feature figcaption{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:25px}
+.paper-feature h3{font-size:clamp(24px,2.5vw,36px);letter-spacing:-.035em;line-height:1.17;margin:0}
+.figure-open{border:0;border-bottom:1px solid #9ea99a;padding:8px 0;background:none;color:#355544;font-family:inherit;font-size:14px;font-weight:600;line-height:1.5;white-space:nowrap;cursor:pointer}
+.figure-open:hover{color:#0c2419;border-color:currentColor}
+.paper-viewport{background:#fff;border:1px solid #dce3d5;border-radius:16px;position:relative;overflow:hidden;box-shadow:0 28px 65px -40px #25402b66}
+.paper-viewport>img{display:block;width:100%;height:auto;transition:opacity .45s}
+.paper-focus-outline{pointer-events:none;position:absolute;border:2px solid #557a60;border-radius:9px;box-shadow:0 0 0 2000px #f7f8f1bb;opacity:0;transition:left .65s ease,top .65s ease,width .65s ease,height .65s ease,opacity .35s}
+.paper-viewport.focused .paper-focus-outline{opacity:1}
+.paper-controls{display:flex;flex-wrap:wrap;gap:9px;margin:24px 0 14px}
+.paper-controls button{border:1px solid transparent;border-radius:100px;background:transparent;padding:10px 19px;color:#65745f;font:inherit;font-size:14px;cursor:pointer;transition:background .25s,color .25s}
+.paper-controls button.active{background:#264a38;color:#fff}
+.paper-controls button:hover:not(.active){background:#e7ecdf}
+.paper-caption{font-size:15px;max-width:900px;color:#65745f!important;line-height:1.6}
+.paper-composition{display:grid;grid-template-columns:1fr 1fr;gap:7%;align-items:center;margin:80px 0 95px}
+.composition-image{max-width:570px;text-align:center;position:relative}
+.composition-image>img{display:block;width:100%;height:auto;mix-blend-mode:multiply}
+.composition-image>.figure-open{margin-top:15px}
+.paper-composition h3{font-size:clamp(30px,3.6vw,49px);line-height:1.12;letter-spacing:-.045em;margin:0 0 22px}
+.paper-composition figcaption>p:not(.eyebrow){font-size:18px;line-height:1.65;color:#64725d}
+.paper-composition ol{list-style:none;padding:0;margin:24px 0 0}
+.paper-composition li{border-top:1px solid #d9dfd1;padding:15px 0;display:flex;align-items:center;gap:30px}
+.paper-composition li span{width:100px;font-size:13px;color:#75866c}
+.paper-composition li strong{font-size:18px;font-weight:550}
+#paper-dialog{border:0;border-radius:18px;background:#f9faf5;width:94vw;max-width:1800px;max-height:94vh;padding:24px;color:#244e3d;box-shadow:0 35px 100px #10271970}
+#paper-dialog::backdrop{background:#142c22b8;backdrop-filter:blur(9px)}
+.paper-dialog-bar{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:20px}
+.paper-dialog-bar h2{font-size:24px;margin:0}
+#paper-dialog-close{border:1px solid #bac9b2;border-radius:100px;background:none;padding:10px 22px;color:inherit;font:inherit;cursor:pointer}
+.paper-dialog-scroll{max-height:72vh;overflow:auto;background:#fff;border-radius:10px}
+#paper-dialog-image{display:block;width:100%;min-width:1100px;max-width:none;height:auto}
+#paper-dialog[data-figure="fig3"] #paper-dialog-image{width:min(75vh,100%);min-width:550px;margin:auto}
+#paper-dialog>p{font-size:13px;color:#6b7e68;margin-bottom:0}
+body.paper-open{overflow:hidden}
+@media(max-width:700px){.paper-feature{margin:42px 0}.paper-feature figcaption{display:block}.figure-open{margin-top:13px}.paper-controls{gap:4px}.paper-controls button{font-size:12px;padding:9px 13px}.paper-composition{grid-template-columns:1fr;gap:27px;margin:48px 0}.composition-image{max-width:430px;margin:auto}.paper-composition figcaption{grid-row:1}.paper-composition h3{font-size:36px}.paper-composition ol{margin-top:13px}.paper-composition li{padding:10px 0}.paper-feature .eyebrow{font-size:10px}.paper-caption{font-size:13px}#paper-dialog{padding:15px}.paper-dialog-bar h2{font-size:18px}}
+@media(prefers-reduced-motion:reduce){.paper-focus-outline,.paper-viewport>img,.paper-controls button{transition:none}}

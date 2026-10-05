@@ -1,0 +1,489 @@
+{
+  "title": "HygieneRoboBench: Benchmarking Hygiene-Aware Planning for Household Robots",
+  "instances": 624,
+  "families": 134,
+  "activities": [
+    {
+      "name": "Food preparation",
+      "count": 126,
+      "image": "food",
+      "task": "Prepare a drink"
+    },
+    {
+      "name": "Dishware & dining",
+      "count": 138,
+      "image": "fruit",
+      "task": "Place fruit on a plate"
+    },
+    {
+      "name": "Cleaning & laundry",
+      "count": 130,
+      "image": "laundry",
+      "task": "Transfer clean laundry"
+    },
+    {
+      "name": "Bedroom & storage",
+      "count": 112,
+      "image": "storage",
+      "task": "Pack books into a box"
+    },
+    {
+      "name": "Pet & household care",
+      "count": 118,
+      "image": "pet",
+      "task": "Fill the pet bowl"
+    }
+  ],
+  "areas": [
+    "Kitchen",
+    "Living room",
+    "Bedroom",
+    "Bathroom",
+    "Dining room",
+    "Utility room",
+    "Garden"
+  ],
+  "main": [
+    {
+      "name": "GPT-5.6-Sol",
+      "sr": 78.5,
+      "osr": 76.9,
+      "difficulty": {
+        "easy": [
+          87.5,
+          85.5
+        ],
+        "moderate": [
+          78.6,
+          77.7
+        ],
+        "hard": [
+          68.8,
+          66.7
+        ]
+      },
+      "activity": [
+        76.2,
+        73.8,
+        73.9,
+        69.6,
+        84.6,
+        83.8,
+        75.9,
+        75.9,
+        82.2,
+        82.2
+      ]
+    },
+    {
+      "name": "GPT-5.6-Luna",
+      "sr": 46.6,
+      "osr": 37.0,
+      "difficulty": {
+        "easy": [
+          55.0,
+          45.5
+        ],
+        "moderate": [
+          52.1,
+          41.2
+        ],
+        "hard": [
+          30.6,
+          22.6
+        ]
+      },
+      "activity": [
+        38.1,
+        29.4,
+        44.9,
+        33.3,
+        54.6,
+        46.9,
+        34.8,
+        31.2,
+        60.2,
+        44.1
+      ]
+    },
+    {
+      "name": "Gemini 3.6 Flash",
+      "sr": 89.7,
+      "osr": 86.1,
+      "difficulty": {
+        "easy": [
+          95.0,
+          91.5
+        ],
+        "moderate": [
+          90.8,
+          88.7
+        ],
+        "hard": [
+          82.8,
+          76.9
+        ]
+      },
+      "activity": [
+        86.5,
+        85.7,
+        87.7,
+        84.1,
+        92.3,
+        86.2,
+        91.1,
+        88.4,
+        91.5,
+        86.4
+      ]
+    },
+    {
+      "name": "DeepSeek-V4.1-Flash",
+      "sr": 90.7,
+      "osr": 75.0,
+      "difficulty": {
+        "easy": [
+          96.0,
+          83.5
+        ],
+        "moderate": [
+          92.4,
+          71.8
+        ],
+        "hard": [
+          82.8,
+          69.9
+        ]
+      },
+      "activity": [
+        83.3,
+        65.9,
+        88.4,
+        64.5,
+        91.5,
+        79.2,
+        96.4,
+        86.6,
+        94.9,
+        81.4
+      ]
+    },
+    {
+      "name": "MiniMax-M3",
+      "sr": 67.0,
+      "osr": 57.2,
+      "difficulty": {
+        "easy": [
+          74.5,
+          66.0
+        ],
+        "moderate": [
+          70.2,
+          58.8
+        ],
+        "hard": [
+          54.8,
+          45.7
+        ]
+      },
+      "activity": [
+        69.0,
+        60.3,
+        58.7,
+        50.7,
+        75.4,
+        61.5,
+        67.9,
+        63.4,
+        64.4,
+        50.8
+      ]
+    },
+    {
+      "name": "Rule-SAT",
+      "sr": 30.9,
+      "osr": 30.0,
+      "difficulty": {
+        "easy": [
+          38.0,
+          37.0
+        ],
+        "moderate": [
+          36.6,
+          35.3
+        ],
+        "hard": [
+          16.1,
+          15.6
+        ]
+      },
+      "activity": [
+        38.1,
+        34.9,
+        15.9,
+        15.9,
+        37.7,
+        36.9,
+        37.5,
+        36.6,
+        27.1,
+        27.1
+      ]
+    },
+    {
+      "name": "Hygiene-NSP",
+      "sr": 94.4,
+      "osr": 90.4,
+      "difficulty": {
+        "easy": [
+          96.5,
+          96.0
+        ],
+        "moderate": [
+          96.2,
+          91.6
+        ],
+        "hard": [
+          89.8,
+          82.8
+        ]
+      },
+      "activity": [
+        100.0,
+        100.0,
+        89.9,
+        86.2,
+        86.9,
+        85.4,
+        96.4,
+        82.1,
+        100.0,
+        98.3
+      ]
+    }
+  ],
+  "events": [
+    {
+      "name": "GPT-5.6-Sol",
+      "relevant": [
+        78.0,
+        74.0
+      ],
+      "irrelevant": [
+        74.0,
+        70.0
+      ]
+    },
+    {
+      "name": "GPT-5.6-Luna",
+      "relevant": [
+        40.0,
+        24.0
+      ],
+      "irrelevant": [
+        34.0,
+        30.0
+      ]
+    },
+    {
+      "name": "Gemini 3.6 Flash",
+      "relevant": [
+        92.0,
+        90.0
+      ],
+      "irrelevant": [
+        94.0,
+        94.0
+      ]
+    },
+    {
+      "name": "DeepSeek-V4.1-Flash",
+      "relevant": [
+        88.0,
+        66.0
+      ],
+      "irrelevant": [
+        92.0,
+        86.0
+      ]
+    },
+    {
+      "name": "MiniMax-M3",
+      "relevant": [
+        76.0,
+        62.0
+      ],
+      "irrelevant": [
+        62.0,
+        56.0
+      ]
+    },
+    {
+      "name": "Rule-SAT",
+      "relevant": [
+        12.0,
+        12.0
+      ],
+      "irrelevant": [
+        12.0,
+        12.0
+      ]
+    },
+    {
+      "name": "Hygiene-NSP",
+      "relevant": [
+        90.0,
+        88.0
+      ],
+      "irrelevant": [
+        92.0,
+        92.0
+      ]
+    }
+  ],
+  "swap": {
+    "unit": "plan evaluations",
+    "rows": [
+      {
+        "method": "M4",
+        "name": "GPT-5.6-Sol",
+        "relevant_evaluations": 360,
+        "irrelevant_evaluations": 184,
+        "safe_before": 287,
+        "safe_after": 157,
+        "both_before": 283,
+        "both_after": 0,
+        "both_retained": 0,
+        "both_new": 0,
+        "irrelevant_unchanged": 184
+      },
+      {
+        "method": "LUNA",
+        "name": "GPT-5.6-Luna",
+        "relevant_evaluations": 360,
+        "irrelevant_evaluations": 184,
+        "safe_before": 181,
+        "safe_after": 89,
+        "both_before": 142,
+        "both_after": 3,
+        "both_retained": 0,
+        "both_new": 3,
+        "irrelevant_unchanged": 184
+      },
+      {
+        "method": "GEMINI",
+        "name": "Gemini 3.6 Flash",
+        "relevant_evaluations": 360,
+        "irrelevant_evaluations": 184,
+        "safe_before": 333,
+        "safe_after": 174,
+        "both_before": 313,
+        "both_after": 2,
+        "both_retained": 0,
+        "both_new": 2,
+        "irrelevant_unchanged": 184
+      },
+      {
+        "method": "DS",
+        "name": "DeepSeek-V4.1-Flash",
+        "relevant_evaluations": 360,
+        "irrelevant_evaluations": 184,
+        "safe_before": 340,
+        "safe_after": 187,
+        "both_before": 286,
+        "both_after": 8,
+        "both_retained": 0,
+        "both_new": 8,
+        "irrelevant_unchanged": 184
+      },
+      {
+        "method": "MINIMAX",
+        "name": "MiniMax-M3",
+        "relevant_evaluations": 360,
+        "irrelevant_evaluations": 184,
+        "safe_before": 252,
+        "safe_after": 129,
+        "both_before": 208,
+        "both_after": 2,
+        "both_retained": 0,
+        "both_new": 2,
+        "irrelevant_unchanged": 184
+      },
+      {
+        "method": "M1",
+        "name": "Rule-SAT",
+        "relevant_evaluations": 360,
+        "irrelevant_evaluations": 184,
+        "safe_before": 148,
+        "safe_after": 74,
+        "both_before": 143,
+        "both_after": 0,
+        "both_retained": 0,
+        "both_new": 0,
+        "irrelevant_unchanged": 184
+      },
+      {
+        "method": "M2",
+        "name": "Hygiene-NSP",
+        "relevant_evaluations": 360,
+        "irrelevant_evaluations": 184,
+        "safe_before": 342,
+        "safe_after": 170,
+        "both_before": 324,
+        "both_after": 0,
+        "both_retained": 0,
+        "both_new": 0,
+        "irrelevant_unchanged": 184
+      }
+    ],
+    "totals": {
+      "relevant_evaluations": 2520,
+      "irrelevant_evaluations": 1288,
+      "safe_before": 1883,
+      "safe_after": 980,
+      "both_before": 1699,
+      "both_after": 15,
+      "both_retained": 0,
+      "both_new": 15,
+      "irrelevant_unchanged": 1288
+    },
+    "interpretation": {
+      "retained": "Original safe-and-optimal source outputs that remain both under the other history.",
+      "new": "Other source outputs that become safe and optimal.",
+      "irrelevant": "Both safety and optimality labels stay unchanged, including originally unsuccessful outputs.",
+      "execution": "Existing saved outputs replayed, no new model or solver calls.",
+      "existing_errors": "Keep existing official scoring, never drop error rows; no new cross-history errors."
+    }
+  },
+  "parameters": {
+    "columns": [
+      "Time, TU",
+      "Water",
+      "Cleaner",
+      "Spare parts",
+      "Solid waste"
+    ],
+    "wash": [
+      3,
+      2,
+      1,
+      0,
+      0
+    ],
+    "replace": [
+      2,
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  "projection": {
+    "families": 59,
+    "pairs": 177,
+    "fallbacks": 21,
+    "agreement": 175,
+    "local_time_reduction_pct": 20.1
+  },
+  "source": "Submitted manuscript, Tables II\u2013V and supplementary saved-output history-swap evaluation"
+}

@@ -1,0 +1,47 @@
+[
+  {
+    "label": "Problem",
+    "start": 0,
+    "stamp": "0:00"
+  },
+  {
+    "label": "Benchmark",
+    "start": 78.06666666666666,
+    "stamp": "1:18"
+  },
+  {
+    "label": "Construction",
+    "start": 126.36666666666665,
+    "stamp": "2:06"
+  },
+  {
+    "label": "Evaluation",
+    "start": 211.96666666666664,
+    "stamp": "3:31"
+  },
+  {
+    "label": "Overall results",
+    "start": 248.86666666666667,
+    "stamp": "4:08"
+  },
+  {
+    "label": "History swaps",
+    "start": 286.43333333333334,
+    "stamp": "4:46"
+  },
+  {
+    "label": "Priorities & events",
+    "start": 342.83333333333337,
+    "stamp": "5:42"
+  },
+  {
+    "label": "Hygiene-NSP",
+    "start": 381.0,
+    "stamp": "6:21"
+  },
+  {
+    "label": "Takeaway",
+    "start": 421.59999999999997,
+    "stamp": "7:01"
+  }
+]
