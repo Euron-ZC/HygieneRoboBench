@@ -1,45 +1,50 @@
 [
   {
-    "title": "Why contact history matters",
+    "title": "Introduction",
     "lines": [
-      "A robot is preparing fruit. Is its gripper safe to use?",
-      "First, the left gripper touches a contaminated tray.",
-      "It then carries contamination to the spoon handle.",
-      "The robot washes both grippers, but not the spoon. Its handle stays contaminated.",
-      "The assistant returns the spoon, contaminating the clean right gripper again.",
-      "The fruit-handling plan must change. First, the robot puts down the spoon.",
-      "User priorities can favor different treatments. We demonstrate washing with water and wiping with paper.",
-      "After treatment, the robot resumes placing fruit.",
-      "Planning must decide what to treat, when, and at what resource cost.",
-      "The benchmark formalizes this choice as washing or replacing the contact pad. User priorities determine the preferred safe continuation.",
-      "HygieneRoboBench tests household planning under contact history, user priorities, and new events."
+      "This is HygieneRoboBench, a benchmark for hygiene-aware planning in household robots."
     ]
   },
   {
-    "title": "What the benchmark asks",
+    "title": "The problem",
+    "lines": [
+      "A robot is preparing fruit. Can it safely continue?",
+      "First, the left gripper touches a contaminated tray.",
+      "It then carries contamination to the spoon handle.",
+      "Both grippers are washed, but the spoon handle stays contaminated.",
+      "The assistant returns the spoon, contaminating the clean right gripper again.",
+      "The robot must put down the spoon and treat its right gripper before touching fruit.",
+      "User priorities can favor different treatments. Here we show washing and wiping.",
+      "After treatment, the robot resumes placing fruit.",
+      "The benchmark models this choice as washing or replacing the contact pad, under the user's priorities.",
+      "HygieneRoboBench evaluates safe, cost-optimal continuations under contact history, user priorities, and new events."
+    ]
+  },
+  {
+    "title": "The benchmark",
     "lines": [
       "Our 624 instances form 134 task families, covering five activity groups and seven household areas.",
-      "Figure three shows three views of these same 624 instances: activity groups, construction designs, and difficulty. The rings partition the same dataset; they are not additional samples.",
+      "The same dataset is organized by activity, construction design, and planning difficulty. Each ring describes these same 624 instances.",
       "Each task provides a request, physical observations, history, resources, available events, and ordered user priorities.",
       "Under shared rules, planners return actions, objects, gripper assignments, and schedules, or an infeasible or undetermined judgment.",
       "Controlled pairs change history, priorities, or event information, keeping other task conditions fixed."
     ]
   },
   {
-    "title": "How tasks and rules are built",
+    "title": "Shared definitions",
     "lines": [
-      "Figure two shows how the benchmark is built. Household activities and hygiene guidance feed five shared registries, which define the rules used to construct each task.",
-      "Tasks adapt BEHAVIOR-1K activities. Published studies and public-health guidance inform hygiene rules with explicit material and procedure requirements.",
-      "In the fruit task, washing requires an empty gripper and treats only its contact pad. The spoon stays separately tracked.",
-      "Washing and replacement have abstract time and resource costs, giving planners a common basis for comparison.",
-      "For general parameter construction, an LLM screens online time and supply estimates; reviewers check plausibility and relative magnitudes.",
+      "Household activities and hygiene guidance feed five shared registries. These provide common task, action, and cost definitions for every planner.",
+      "Activities come from BEHAVIOR-1K. Hygiene evidence guides material and cleaning-procedure requirements; we formalize the corresponding treatment rules.",
+      "For example, washing requires an empty gripper and treats only its contact pad. The spoon is tracked separately.",
+      "We assign abstract time and resource costs to washing and replacement, so every planner compares the same alternatives.",
+      "For parameter construction, an LLM screens online time and supply estimates. Reviewers check plausibility and relative magnitudes.",
       "Washing saves spare parts. Replacement saves water but produces waste. User priorities determine the preferred safe option.",
-      "Two reviewers check applicability, action conditions, and consistency; a third gives final review. Programs separately validate matched conditions and reference targets.",
-      "The episode builder combines a base task with histories, priorities, and event information. Matched-condition checks, reference validation, independent replay, and human review govern dataset admission."
+      "Two reviewers check applicability, action conditions, and consistency. A third gives final review; programs check matched conditions and reference targets.",
+      "The episode builder varies histories, priorities, or event information within a task family. Admission checks keep these comparisons consistent and validate the reference targets."
     ]
   },
   {
-    "title": "How submitted plans are evaluated",
+    "title": "Evaluation",
     "lines": [
       "Independent of the planning solver, the evaluator replays history and checks goals, hygiene, timing, and resource limits.",
       "Holding the spoon violates the washing precondition. Putting it down first satisfies the empty-gripper requirement.",
@@ -48,7 +53,7 @@
     ]
   },
   {
-    "title": "What the benchmark reveals",
+    "title": "Findings",
     "lines": [
       "We evaluate five language models, Rule-SAT, and Hygiene-NSP on the same 624 instances.",
       "Hygiene-NSP reaches 94.4 percent safe resolution and 90.4 percent optimal safe resolution, the highest overall rates.",
@@ -57,7 +62,7 @@
     ]
   },
   {
-    "title": "Does changing history change the outcome?",
+    "title": "Controlled history swaps",
     "lines": [
       "These fruit histories share physical conditions and priorities. Changing whether washing precedes spoon contact changes the contamination state.",
       "Prioritizing spare parts, the contaminated case needs washing before fruit handling. The clean case can continue directly after putting down the spoon.",
@@ -67,7 +72,7 @@
     ]
   },
   {
-    "title": "Priorities and newly revealed events",
+    "title": "Priorities and events",
     "lines": [
       "Priority pairs instead fix history and action costs, testing whether plans adapt when users change their resource preferences.",
       "Hygiene-NSP succeeds on 234 of 268 general pairs and 24 of 25 ranking-flip pairs, leading both groups.",
@@ -76,7 +81,7 @@
     ]
   },
   {
-    "title": "A companion neuro-symbolic planner",
+    "title": "Hygiene-NSP",
     "lines": [
       "Hygiene-NSP grounds requests and priorities with a language model. A trusted compiler checks the structured planning problem.",
       "History replay reconstructs hygiene states. CP-SAT jointly schedules treatment and service actions under user priorities.",

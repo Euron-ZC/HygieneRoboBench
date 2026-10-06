@@ -1,47 +1,47 @@
 [
   {
-    "label": "Problem",
+    "label": "Introduction & real-robot case",
     "start": 0,
     "stamp": "0:00"
   },
   {
-    "label": "Benchmark",
-    "start": 78.06666666666666,
-    "stamp": "1:18"
+    "label": "The benchmark",
+    "start": 73.30000000000001,
+    "stamp": "1:13"
   },
   {
-    "label": "Construction",
-    "start": 126.36666666666665,
-    "stamp": "2:06"
+    "label": "Shared definitions",
+    "start": 117.83333333333333,
+    "stamp": "1:58"
   },
   {
     "label": "Evaluation",
-    "start": 211.96666666666664,
-    "stamp": "3:31"
+    "start": 200.76666666666668,
+    "stamp": "3:21"
   },
   {
-    "label": "Overall results",
-    "start": 248.86666666666667,
-    "stamp": "4:08"
+    "label": "Findings",
+    "start": 237.6666666666667,
+    "stamp": "3:58"
   },
   {
-    "label": "History swaps",
-    "start": 286.43333333333334,
-    "stamp": "4:46"
+    "label": "Controlled history swaps",
+    "start": 275.23333333333335,
+    "stamp": "4:35"
   },
   {
-    "label": "Priorities & events",
-    "start": 342.83333333333337,
-    "stamp": "5:42"
+    "label": "Priorities and events",
+    "start": 331.6333333333334,
+    "stamp": "5:32"
   },
   {
     "label": "Hygiene-NSP",
-    "start": 381.0,
-    "stamp": "6:21"
+    "start": 369.8,
+    "stamp": "6:10"
   },
   {
     "label": "Takeaway",
-    "start": 421.59999999999997,
-    "stamp": "7:01"
+    "start": 410.4,
+    "stamp": "6:50"
   }
 ]

@@ -1,6 +1,6 @@
-import {initializeFilm} from './film.js?v=1';
+import {initializeFilm} from './film.js?v=2';
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-const [data,reel,transcript,chapters]=await Promise.all(['data.json','assets/reel.json','transcript.json','chapters.json'].map(p=>fetch(p).then(r=>r.json())));
+const [data,reel,transcript,chapters]=await Promise.all(['data.json','assets/reel.json','transcript.json?v=19','chapters.json?v=19'].map(p=>fetch(p).then(r=>r.json())));
 
 // The opening wall combines one real motivating case with five task illustrations.
 const heroSection=$('.hero'), hero=$('#real-hero-video');let heroView='overview';

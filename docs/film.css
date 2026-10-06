@@ -9,6 +9,7 @@
   box-shadow: 0 30px 70px #0004;
 }
 .research-player iframe,
+.research-player video,
 .research-player > div,
 .film-cover {
   position: absolute;
@@ -17,6 +18,27 @@
   height: 100%;
   border: 0;
 }
+.research-player video { object-fit: contain; }
+.research-player [hidden] { display: none; }
+.film-playback-options {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+.film-playback-options button {
+  border: 1px solid #ffffff50;
+  border-radius: 5px;
+  background: transparent;
+  color: #d8e0d4;
+  font: 500 var(--type-small) / 1.5 var(--font-ui);
+  padding: 8px 16px;
+  cursor: pointer;
+}
+.film-playback-options button[aria-pressed="true"],
+.film-playback-options button:hover { background: #ffffff16; color: white; }
+.film-playback-options button:focus-visible { outline: 2px solid #c8e298; outline-offset: 3px; }
 .film-cover {
   display: grid;
   place-items: center;
