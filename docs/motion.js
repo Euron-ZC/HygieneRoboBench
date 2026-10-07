@@ -1,3 +1,4 @@
+import {setPoster} from './media.js?v=1';
 const $=s=>document.querySelector(s);
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');
 let globallyPaused=document.body.classList.contains('motion-paused')||reduced.matches;
@@ -35,7 +36,7 @@ async function playRegistry(){reg.running=true;rp.hidden=false;if(rv.ended)rv.cu
 function pauseRegistry(){rv.pause();rp.textContent=rv.ended?'Replay illustration':'Play illustration'}
 const reg=observe($('.registry-layout'),playRegistry,pauseRegistry);
 rp.onclick=()=>{if(rv.paused)playRegistry();else{reg.running=false;pauseRegistry()}};$('#registry-replay').onclick=()=>{rv.currentTime=0;playRegistry()};rv.addEventListener('ended',()=>{reg.running=false;rp.hidden=true;rp.textContent='Replay illustration'});
-document.addEventListener('registry-select',e=>{registryIndex=e.detail.index;pauseRegistry();rv.src=registryClips[registryIndex];rv.poster=registryPosters[registryIndex];rv.setAttribute('aria-label',e.detail.title);rv.load();if(reg.visible&&!globallyPaused)playRegistry();});
+document.addEventListener('registry-select',e=>{registryIndex=e.detail.index;pauseRegistry();const source=rv.getAttribute('src')||rv.querySelector('source')?.getAttribute('src');if(source!==registryClips[registryIndex]){rv.src=registryClips[registryIndex];rv.load()}setPoster(rv,registryPosters[registryIndex]);rv.setAttribute('aria-label',e.detail.title);if(reg.visible&&!globallyPaused)playRegistry();});
 // Animate the original paper's own structure; preserve its labels and values.
 document.querySelectorAll('.paper-feature').forEach(fig=>{
  const controls=fig.querySelector('.paper-controls'),steps=[...controls.querySelectorAll('[data-focus]')],bar=document.createElement('div');bar.className='figure-tour';bar.innerHTML='<button class="motion-button">Play walkthrough</button><span></span>';controls.before(bar);const button=bar.querySelector('button'),label=bar.querySelector('span');let index=0,timer=null,internal=false;

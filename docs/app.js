@@ -1,4 +1,5 @@
-import {initializeFilm} from './film.js?v=2';
+import {initializeFilm} from './film.js?v=3';
+import {deferCovers} from './media.js?v=1';
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const [data,reel,transcript,chapters]=await Promise.all(['data.json','assets/reel.json','transcript.json?v=19','chapters.json?v=19'].map(p=>fetch(p).then(r=>r.json())));
 
@@ -15,7 +16,7 @@ $$('[data-beat]').forEach(b=>b.onclick=()=>{hero.currentTime=reel[+b.dataset.bea
 $$('.hero-view-switch button').forEach(b=>b.onclick=()=>setHeroView(b.dataset.view));
 
 // One fixed viewing area, with five native task scenes.
-$('#task-stage').innerHTML=data.activities.map((x,i)=>`<div class="task-scene ${i===0?'active':''}" id="task-scene-${i}" role="tabpanel" aria-labelledby="task-${i}" ${i?'hidden':''}><video class="ambient-video" muted loop playsinline preload="none" poster="assets/${x.image}.webp" aria-label="${x.task}, native OmniGibson illustration"><source src="assets/${x.image}-loop.mp4" type="video/mp4"></video><div class="task-caption"><span>${x.count} benchmark instances in this activity group</span><h3>${x.task}</h3></div></div>`).join('');
+$('#task-stage').innerHTML=data.activities.map((x,i)=>`<div class="task-scene ${i===0?'active':''}" id="task-scene-${i}" role="tabpanel" aria-labelledby="task-${i}" ${i?'hidden':''}><video class="ambient-video" muted loop playsinline preload="none" data-poster="assets/${x.image}.webp" aria-label="${x.task}, native OmniGibson illustration"><source src="assets/${x.image}-loop.mp4" type="video/mp4"></video><div class="task-caption"><span>${x.count} benchmark instances in this activity group</span><h3>${x.task}</h3></div></div>`).join('');
 $('#task-gallery').innerHTML=data.activities.map((x,i)=>`<button class="task-card ${i===0?'active':''}" id="task-${i}" role="tab" tabindex="${i===0?'0':'-1'}" aria-selected="${i===0}" aria-controls="task-scene-${i}" data-task="${i}"><img src="assets/${x.image}.webp" alt="" loading="lazy"><div><h3>${x.name}</h3><span>${x.count} instances</span></div></button>`).join('');
 $('#area-list').textContent=data.areas.join(' / ');
 function selectTask(i){$$('[data-task]').forEach((b,n)=>{b.classList.toggle('active',n===i);b.setAttribute('aria-selected',String(n===i));b.tabIndex=n===i?0:-1});$$('.task-scene').forEach((s,n)=>{s.hidden=n!==i;s.classList.toggle('active',n===i);if(n!==i)s.querySelector('video').pause()});}
@@ -47,11 +48,24 @@ $('#event-table').innerHTML='<caption class="sr-only">Contact-event SR and OSR i
 
 // Pause off-screen media and respect reduced-motion preferences.
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');let ambientPaused=reduced.matches;const visibleVideos=new Set();
-function updateMotion(){document.body.classList.toggle('motion-paused',ambientPaused);document.dispatchEvent(new CustomEvent('motion-preference',{detail:{paused:ambientPaused}}));const b=$('#motion-toggle');b.setAttribute('aria-pressed',ambientPaused);b.setAttribute('aria-label',ambientPaused?'Resume ambient motion':'Pause ambient motion');b.innerHTML=ambientPaused?'▶ <span>Play motion</span>':'Ⅱ <span>Pause motion</span>';$$('.ambient-video').forEach(v=>{if(!ambientPaused&&visibleVideos.has(v)&&!document.hidden&&!(v.closest('.showcase-task')&&heroView==='real')&&!(v===hero&&heroView==='tasks'))v.play().catch(()=>{});else v.pause()})}
+// Start the small simulation loops in sequence, then the larger real-robot clip.
+// Covers remain visible throughout startup; explicit Real robot selection starts immediately.
+const heroEpoch=performance.now();
+const heroDelays=new Map([...heroSection.querySelectorAll('.showcase-task video'),hero].map((v,i)=>[v,200+i*650]));
+const heroStarted=new Set(), startupTimers=new Map();
+function mayPlay(v){return !ambientPaused&&visibleVideos.has(v)&&!document.hidden&&!(v.closest('.showcase-task')&&heroView==='real')&&!(v===hero&&heroView==='tasks')}
+function startAmbient(v){
+ if(heroView!=='overview'&&startupTimers.has(v)){clearTimeout(startupTimers.get(v));startupTimers.delete(v)}
+ if(!v.paused||startupTimers.has(v))return;
+ const delay=heroDelays.has(v)&&!heroStarted.has(v)&&heroView==='overview'?Math.max(0,heroEpoch+heroDelays.get(v)-performance.now()):0;
+ const start=()=>{startupTimers.delete(v);if(mayPlay(v))v.play().then(()=>heroStarted.add(v)).catch(()=>{})};
+ if(delay)startupTimers.set(v,setTimeout(start,delay));else start();
+}
+function updateMotion(){document.body.classList.toggle('motion-paused',ambientPaused);document.dispatchEvent(new CustomEvent('motion-preference',{detail:{paused:ambientPaused}}));const b=$('#motion-toggle');b.setAttribute('aria-pressed',ambientPaused);b.setAttribute('aria-label',ambientPaused?'Resume ambient motion':'Pause ambient motion');b.innerHTML=ambientPaused?'▶ <span>Play motion</span>':'Ⅱ <span>Pause motion</span>';$$('.ambient-video').forEach(v=>{if(mayPlay(v))startAmbient(v);else{clearTimeout(startupTimers.get(v));startupTimers.delete(v);v.pause()}})}
 const observer=new IntersectionObserver(es=>{es.forEach(({target,isIntersecting})=>{if(isIntersecting)visibleVideos.add(target);else visibleVideos.delete(target)});updateMotion()},{threshold:.08});$$('.ambient-video').forEach(v=>observer.observe(v));$('#motion-toggle').onclick=()=>{ambientPaused=!ambientPaused;updateMotion()};reduced.addEventListener('change',()=>{ambientPaused=reduced.matches;updateMotion()});document.addEventListener('visibilitychange',updateMotion);updateMotion();
 
 $('#transcript').innerHTML=transcript.map(s=>`<h3>${s.title}</h3>${s.lines.map(l=>`<p>${l}</p>`).join('')}`).join('');
-$('#chapter-links').innerHTML=chapters.map(c=>`<button data-time="${c.start}"><span>${c.stamp}</span>${c.label}</button>`).join('');initializeFilm(chapters);
+$('#chapter-links').innerHTML=chapters.map(c=>`<button data-time="${c.start}"><span>${c.stamp}</span>${c.label}</button>`).join('');initializeFilm(chapters);deferCovers();
 const header=$('.site-header'),navLinks=$$('[data-section-nav]'),sections=navLinks.map(a=>document.getElementById(a.dataset.sectionNav));let tick=false;
 function scrollUpdate(){header.classList.toggle('scrolled',scrollY>heroSection.offsetHeight-80);let current=null;sections.forEach(s=>{if(s.getBoundingClientRect().top<150)current=s.id});if($('#film').getBoundingClientRect().top<150)current=null;navLinks.forEach(a=>{const on=a.dataset.sectionNav===current;a.classList.toggle('active',on);if(on)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current')});tick=false}
 addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(scrollUpdate)}},{passive:true});addEventListener('resize',scrollUpdate);scrollUpdate();

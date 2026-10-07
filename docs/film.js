@@ -1,3 +1,4 @@
+import {deferCovers,loadCover} from './media.js?v=1';
 // Load either source only after a play or chapter click.
 export function initializeFilm(chapters) {
   const film = document.getElementById('research-film');
@@ -21,10 +22,11 @@ export function initializeFilm(chapters) {
   const watchUrl = `https://www.youtube.com/watch?v=${videoId}`;
   const shell = document.createElement('div');
   shell.className = 'research-player';
-  shell.innerHTML = `<button class="film-cover" aria-label="Play the research film on YouTube"><img src="${film.poster}" alt="Real-robot motivating example" loading="lazy"><span class="film-play" aria-hidden="true">▶</span></button><div id="youtube-film" hidden></div>`;
+  shell.innerHTML = `<button class="film-cover" aria-label="Play the research film on YouTube"><img data-src="${film.dataset.poster || film.poster}" alt="Real-robot motivating example" loading="lazy"><span class="film-play" aria-hidden="true">▶</span></button><div id="youtube-film" hidden></div>`;
   film.replaceWith(shell);
   film.hidden = true;
   shell.append(film);
+  deferCovers(shell);
   const cover = shell.querySelector('.film-cover');
   const controls = document.createElement('div');
   controls.className = 'film-playback-options';
@@ -57,6 +59,7 @@ export function initializeFilm(chapters) {
     cover.removeAttribute('aria-busy');
     delete shell.dataset.loading;
     film.hidden = false;
+    loadCover(film);
     film.currentTime = time;
     film.play().catch(() => {});
     highlight(time);

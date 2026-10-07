@@ -27,11 +27,12 @@ The included preview server supports byte ranges for video seeking. No build ste
 - `index.html`, `style.css`, `app.js`: responsive page and accessible history interaction.
 - `paper.css`, `paper.js`, `assets/paper/`: original manuscript figures, focus controls, and enlarged viewer.
 - `film.js`, `film.css`: YouTube film player, original real-robot cover, and chapter seeking.
+- `media.js`: cover loading near the viewport.
 - `data.json`: manuscript and supplementary result values.
 - `transcript.json`: the complete film narration.
 - `assets/`: native scene images and loops, share image, film, captions, and manuscript.
 
-All website media are included as regular files in this directory. Paper figures use lossless WebP with pixels identical to the original PNG files. The 72-second hero has a smaller streaming copy; off-screen videos wait until playback rather than preloading video data. The paper download is the 9-page preprint with formal authors and affiliations.
+All website media are included as regular files in this directory. Paper figures use lossless WebP with pixels identical to the original PNG files. The 72-second hero has a smaller streaming copy; off-screen videos wait until playback rather than preloading video data. Off-screen covers load shortly before entering view, and hero videos start in sequence to reduce competing downloads. Selecting a hero view starts its videos immediately. The paper download is the 9-page preprint with formal authors and affiliations.
 
 ## Publication fields
 
