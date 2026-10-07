@@ -14,7 +14,7 @@ Tianyi Wang<sup>2,6</sup>, Mark Crowley<sup>3</sup>, Wentao Zhu<sup>2,7</sup>
 <p align="center">
   <a href="docs/assets/manuscript.pdf"><img src="assets/badges/paper.svg" alt="Paper" height="28" /></a>
   <a href="https://euron-zc.github.io/HygieneRoboBench/"><img src="assets/badges/project-page.svg" alt="Project Page" height="28" /></a>
-  <a href="#paper-and-citation"><img src="assets/badges/arxiv.svg" alt="arXiv" height="28" /></a>
+  <a href="https://arxiv.org/abs/2610.08642"><img src="assets/badges/arxiv.svg" alt="arXiv:2610.08642" height="28" /></a>
   <a href="https://www.youtube.com/watch?v=lHuMwe2h5wo"><img src="assets/badges/video.svg" alt="Video" height="28" /></a>
 </p>
 
@@ -68,17 +68,18 @@ The evaluation exchanges histories across 180 relevant-history pairs and 92 irre
 
 [**Read the paper (PDF, 9 pages)**](docs/assets/manuscript.pdf)
 
-The manuscript contains the formal authors and affiliations, benchmark definitions, methods, and complete reported results. The arXiv link will be added when the public record is available.
+The public arXiv version is available at [arXiv:2610.08642](https://arxiv.org/abs/2610.08642). It contains the formal authors and affiliations, benchmark definitions, methods, and complete reported results.
 
-Until then, the manuscript can be cited as a preprint:
+Cite the preprint as:
 
 ```bibtex
-@unpublished{chen2026hygienerobobench,
+@misc{chen2026hygienerobobench,
   title = {HygieneRoboBench: Benchmarking Hygiene-Aware Planning for Household Robots},
   author = {Chen, Yurun and Sun, Josh Qixuan and Qin, Jason and Li, Chengtai and Wang, Tianyi and Crowley, Mark and Zhu, Wentao},
   year = {2026},
-  note = {Preprint},
-  url = {https://github.com/Euron-ZC/HygieneRoboBench}
+  eprint = {2610.08642},
+  archivePrefix = {arXiv},
+  url = {https://arxiv.org/abs/2610.08642}
 }
 ```
 

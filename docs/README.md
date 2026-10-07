@@ -35,7 +35,7 @@ All website media are included as regular files in this directory. Paper figures
 
 ## Publication fields
 
-The page is publicly deployed through GitHub Pages, with search indexing enabled. The arXiv link will be added when the public record becomes available; code and data are being prepared for release through the repository. Authors and affiliations are listed in the approved order; no corresponding-author marker is displayed.
+The page is publicly deployed through GitHub Pages, with search indexing enabled. The public preprint is available at [arXiv:2610.08642](https://arxiv.org/abs/2610.08642); code and data are being prepared for release through the repository. Authors and affiliations are listed in the approved order; no corresponding-author marker is displayed.
 
 The official repository is `Euron-ZC/HygieneRoboBench`; its `docs/` directory is the prepared GitHub Pages source. The public URL is `https://euron-zc.github.io/HygieneRoboBench/`. The arXiv abstract and homepage resource links use these canonical addresses. GitHub Pages publishes the `main` branch from `/docs`. Code and data will be released in stages through the official repository.
 

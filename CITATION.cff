@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "Please cite the HygieneRoboBench manuscript if you use this work."
+message: "Please cite the HygieneRoboBench preprint if you use this work."
 type: article
 title: "HygieneRoboBench: Benchmarking Hygiene-Aware Planning for Household Robots"
 authors:
@@ -17,7 +17,12 @@ authors:
     given-names: Mark
   - family-names: Zhu
     given-names: Wentao
-url: "https://github.com/Euron-ZC/HygieneRoboBench"
+date-released: 2026-10-06
+url: "https://arxiv.org/abs/2610.08642"
+identifiers:
+  - type: other
+    value: "2610.08642"
+    description: "arXiv identifier"
 repository-code: "https://github.com/Euron-ZC/HygieneRoboBench"
 keywords:
   - household robotics

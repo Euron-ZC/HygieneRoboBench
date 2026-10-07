@@ -170,8 +170,6 @@ body .eyebrow,.mini-label,.hero-title .eyebrow,.hero-story-top .eyebrow,
 .hero-actions {flex-wrap:wrap;align-items:center}
 .hero-actions .button {justify-content:center;white-space:nowrap;min-width:105px}
 .hero-actions .button:focus-visible {outline:2px solid #c8e298;outline-offset:3px}
-.hero-actions .resource-pending {color:#f0f3ed;border-color:#ffffff60;background:#ffffff0d;cursor:default;opacity:1}
-.hero-actions .resource-pending:hover {transform:none;background:#ffffff0d}
 .hero-actions .release-status {font-size:inherit;font-weight:400;color:#ced8ce}
 @media(max-width:600px) {
  .hero-actions {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:390px;margin-inline:auto;gap:10px}
